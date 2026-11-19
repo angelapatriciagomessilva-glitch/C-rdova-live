@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-live-rtmp" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>LiveRtmp</name>
+    <description>Envia vídeo H.264 (WebCodecs) e áudio PCM (codificado em AAC aqui) por RTMP/RTMPS — Twitch, YouTube etc.</description>
+    <js-module src="www/live.js" name="LiveRtmp"><clobbers target="LiveRtmp" /></js-module>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="LiveRtmp"><param name="android-package" value="com.meuapp.live.LivePlugin" /></feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+        <source-file src="src/android/com/meuapp/live/RtmpPublisher.java" target-dir="src/com/meuapp/live" />
+        <source-file src="src/android/com/meuapp/live/H264Util.java" target-dir="src/com/meuapp/live" />
+        <source-file src="src/android/com/meuapp/live/LivePlugin.java" target-dir="src/com/meuapp/live" />
+    </platform>
+</plugin>

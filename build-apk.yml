@@ -1,0 +1,29 @@
+name: Compilar APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+      - uses: android-actions/setup-android@v3
+      - run: npm install -g cordova@12
+      - run: sh build-www.sh app
+      - name: Plataforma e plugins
+        run: |
+          cordova platform add android@13
+          cordova plugin add cordova-plugin-android-permissions
+          cordova plugin add cordova-plugin-file
+          cordova plugin add cordova-plugin-x-socialsharing
+          cordova plugin add ./plugins-local/cordova-plugin-live-rtmp
+      - run: cordova build android --debug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-vtuber-apk
+          path: platforms/android/app/build/outputs/apk/debug/*.apk

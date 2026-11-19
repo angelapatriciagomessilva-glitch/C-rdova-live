@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.meuapp.livevtuber" version="1.0.0" android-versionCode="1"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Live VTuber</name>
+    <description>Estúdio de live estilo OBS com modelo VTuber, rastreio facial, gravação e transmissão RTMP.</description>
+    <author email="voce@exemplo.com" href="https://exemplo.com">Seu Nome</author>
+
+    <content src="index.html" />
+
+    <access origin="*" />
+    <allow-navigation href="https://localhost/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <preference name="Scheme" value="https" />
+    <preference name="Hostname" value="localhost" />
+    <preference name="Orientation" value="default" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackgroundColor" value="0xff14111f" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="34" />
+
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-feature android:name="android.hardware.camera" android:required="false" />
+            <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+            <uses-feature android:name="android.hardware.microphone" android:required="false" />
+        </config-file>
+    </platform>
+
+    <plugin name="cordova-plugin-android-permissions" spec="^1.1.5" />
+    <plugin name="cordova-plugin-file" spec="^8.1.0" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^6.0.4" />
+    <engine name="android" spec="^13.0.0" />
+</widget>

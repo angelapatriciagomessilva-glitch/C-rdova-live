@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#14111f">
+<title>Live VTuber</title>
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="live.css">
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="brand">Live<b>VTuber</b></div>
+  <div class="bar-actions">
+    <select id="sceneSel" title="Cena ativa"></select>
+    <button id="btnTrack" title="Ligar/desligar o rastreio facial">● Rastrear</button>
+    <button id="btnRec" title="Gravar um vídeo da cena">⏺ Gravar</button>
+    <button id="btnLive" class="golive" title="Transmitir ao vivo (RTMP)">📡 Ao vivo</button>
+  </div>
+</header>
+<main>
+  <section class="stage" id="stage">
+    <div class="view" id="view"><canvas id="out"></canvas><canvas id="ov"></canvas></div>
+    <div class="hud" id="hud"></div>
+  </section>
+  <aside class="panel" id="panel">
+    <nav class="tabs" id="tabs">
+      <button data-tab="items" class="on">Fontes</button>
+      <button data-tab="scenes">Cenas</button>
+      <button data-tab="model">Modelo</button>
+      <button data-tab="audio">Áudio</button>
+      <button data-tab="live">Transmissão</button>
+      <button data-tab="set">Ajustes</button>
+    </nav>
+    <div class="tabbody" id="tabbody"></div>
+  </aside>
+</main>
+<input type="file" id="fileImg" accept="image/*" hidden>
+<input type="file" id="fileModel" accept=".vrig,.json,application/json" hidden>
+<div class="toast" id="toast" hidden></div>
+<script type="module" src="js/live.js"></script>
+</body>
+</html>
