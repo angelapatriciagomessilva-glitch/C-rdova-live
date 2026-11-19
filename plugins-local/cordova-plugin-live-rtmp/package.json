@@ -1,0 +1,11 @@
+{
+  "name": "cordova-plugin-live-rtmp",
+  "version": "1.0.0",
+  "description": "Cordova Live RTMP Plugin",
+  "cordova": {
+    "id": "cordova-plugin-live-rtmp",
+    "platforms": [
+      "android"
+    ]
+  }
+}
