@@ -21,6 +21,12 @@ jobs:
           cordova plugin add cordova-plugin-file
           cordova plugin add cordova-plugin-x-socialsharing
           cordova plugin add ./plugins-local/cordova-plugin-live-rtmp
+            - run: |
+          echo "cdvCompileSdkVersion=34" >> platforms/android/gradle.properties
+          echo "android.useAndroidX=true" >> platforms/android/gradle.properties
+          echo "android.enableJetifier=true" >> platforms/android/gradle.properties
+          sed -i 's/androidx.appcompat:appcompat:1.6.1/androidx.appcompat:appcompat:1.7.0/g' platforms/android/app/build.gradle platforms/android/CordovaLib/build.gradle 2>/dev/null || true
+        
       - run: cordova build android --debug
       - uses: actions/upload-artifact@v4
         with:
