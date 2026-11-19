@@ -26,7 +26,12 @@ jobs:
           echo "android.useAndroidX=true" >> platforms/android/gradle.properties
           echo "android.enableJetifier=true" >> platforms/android/gradle.properties
           sed -i 's/androidx.appcompat:appcompat:1.6.1/androidx.appcompat:appcompat:1.7.0/g' platforms/android/app/build.gradle platforms/android/CordovaLib/build.gradle 2>/dev/null || true
-        
+              - run: |
+          sed -i 's/"APPCOMPAT_VERSION":"1.6.1"/"APPCOMPAT_VERSION":"1.7.0"/g' platforms/android/cdv-gradle-config.json
+          sed -i 's/"COMPILE_SDK_VERSION":33/"COMPILE_SDK_VERSION":34/g' platforms/android/cdv-gradle-config.json
+          echo "android.enableAapt2=true" >> platforms/android/gradle.properties
+          echo "android.enableResourceOptimizations=false" >> platforms/android/gradle.properties
+          
       - run: cordova build android --debug
       - uses: actions/upload-artifact@v4
         with:
